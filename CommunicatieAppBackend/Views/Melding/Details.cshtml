@@ -1,0 +1,36 @@
+﻿@model CommunicatieAppBackend.Models.Melding
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Melding</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Inhoud)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Inhoud)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Melding" asp-action="Edit" asp-route-id="@Model?.MeldingId">Edit</a> |
+    <a asp-controller="Melding" asp-action="Index">Back to List</a>
+</div>

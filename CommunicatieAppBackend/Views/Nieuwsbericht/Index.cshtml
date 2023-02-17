@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CommunicatieAppBackend.Models.Nieuwsbericht>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Nieuwsberichten</h1>
+
+<p>
+    <a asp-controller="Nieuwsbericht" asp-action="Create">Create New</a>
+</p>
+
+@using (Html.BeginForm("Index", "Nieuwsberichten", FormMethod.Get))
+{
+<text>Search:</text> @Html.TextBox("searchString")<input type="submit" name="submit" value="Search" />
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inhoud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Titel)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Inhoud)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Datum)
+            </td>
+            <td>
+                <a asp-controller="Nieuwsbericht" asp-action="Edit" asp-route-id="@item.NieuwsberichtId">Edit</a> |
+                <a asp-controller="Nieuwsbericht" asp-action="Details" asp-route-id="@item.NieuwsberichtId">Details</a> |
+                <a asp-controller="Nieuwsbericht" asp-action="Delete" asp-route-id="@item.NieuwsberichtId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
