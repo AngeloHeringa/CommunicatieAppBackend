@@ -26,6 +26,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Datum)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -40,6 +43,9 @@
             </td>
             <td>
                 @Html.DisplayFor(model => item.Datum)
+            </td>
+            <td>
+                <img src="~/Image/Nieuws/@Html.DisplayFor(model => item.Image)"></img>
             </td>
             <td>
                 <a asp-controller="Nieuwsbericht" asp-action="Edit" asp-route-id="@item.NieuwsberichtId">Edit</a> |

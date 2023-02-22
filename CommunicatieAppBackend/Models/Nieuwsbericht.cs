@@ -7,6 +7,6 @@ public class Nieuwsbericht{
     public int NieuwsberichtId { get; set; }
     public String Titel { get; set; }
     public String Inhoud { get; set; }
-    public String Image { get; set; }    
+    public String? Image { get; set; }    
     public DateTime Datum { get; set; }
 }

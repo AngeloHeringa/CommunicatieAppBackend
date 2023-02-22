@@ -15,7 +15,7 @@ public class AppDbContext : DbContext{
             .EnableSensitiveDataLogging();
     }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Melding>().HasData(
@@ -28,10 +28,10 @@ public class AppDbContext : DbContext{
         );
         modelBuilder.Entity<Nieuwsbericht>().HasData(
             new Nieuwsbericht{
-                NieuwsberichtId=1, Titel="test", Inhoud="hoi", Datum=DateTime.Now, Image="noimage"
+                NieuwsberichtId=1, Titel="test", Inhoud="hoi", Datum=DateTime.Now
             },
             new Nieuwsbericht{
-                NieuwsberichtId=2, Titel="test2", Inhoud="hoi2", Datum=DateTime.Now, Image="noimage"
+                NieuwsberichtId=2, Titel="test2", Inhoud="hoi2", Datum=DateTime.Now
             }
         );
     }

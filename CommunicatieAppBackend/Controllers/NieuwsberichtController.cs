@@ -7,11 +7,14 @@ namespace CommunicatieAppBackend.Controllers;
 public class NieuwsberichtController : Controller
 {
     private readonly AppDbContext _context;
+    private readonly IWebHostEnvironment _environment;
 
-    public NieuwsberichtController(AppDbContext context)
+    public NieuwsberichtController(AppDbContext context, IWebHostEnvironment environment)
     {
         _context = context;
+        _environment = environment;
     }
+
     public async Task<IActionResult> Index(String searchString)
     {
         if (searchString != null)
@@ -53,18 +56,49 @@ public class NieuwsberichtController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     // [Route("Create")]
-    public async Task<IActionResult> Create([Bind("Titel,Inhoud,Datum,Image")] Nieuwsbericht Nieuwsbericht)
+    public async Task<IActionResult> Create(NieuwsberichtViewModel model)
     {
-        Nieuwsbericht.NieuwsberichtId=await _context.nieuwsberichten.MaxAsync(it=>it.NieuwsberichtId)+1;
-        Console.WriteLine("creating "+Nieuwsbericht.NieuwsberichtId+"..");
-        
-        if (ModelState.IsValid)
+        if (model.Foto == null || model.Foto.Length == 0)
         {
-            _context.Add(Nieuwsbericht);
+            return Content("File not selected");
+        }
+        var path = Path.Combine(_environment.WebRootPath, "Image/Nieuws", model.Foto.FileName);
+        Console.WriteLine(path);
+
+        using (FileStream stream = new FileStream(path, FileMode.Create))
+        {
+            await model.Foto.CopyToAsync(stream);
+            stream.Close();
+        }
+
+        model.nieuwsbericht.Image = model.Foto.FileName;
+
+        if (model != null)
+        {
+            Console.WriteLine(model.nieuwsbericht.Image);
+            var nieuwsbericht = new Nieuwsbericht
+            {
+                Titel = model.nieuwsbericht.Titel,
+                Inhoud = model.nieuwsbericht.Inhoud,
+                Datum = model.nieuwsbericht.Datum,
+                Image = model.nieuwsbericht.Image,
+                // ImageLocation = path,
+            };
+            _context.Add(nieuwsbericht);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        } else Console.WriteLine("creating failed");
-        return View(Nieuwsbericht);
+        }
+        return RedirectToAction(nameof(Index));
+
+        // Nieuwsbericht.NieuwsberichtId=await _context.nieuwsberichten.MaxAsync(it=>it.NieuwsberichtId)+1;
+        // Console.WriteLine("creating "+Nieuwsbericht.NieuwsberichtId+"..");
+        
+        // if (ModelState.IsValid)
+        // {
+        //     _context.Add(Nieuwsbericht);
+        //     await _context.SaveChangesAsync();
+        //     return RedirectToAction(nameof(Index));
+        // } else Console.WriteLine("creating failed");
+        // return View(Nieuwsbericht);
     }
 
     // GET: nieuwsberichten/Edit/5
