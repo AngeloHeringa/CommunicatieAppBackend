@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ljSBhy0ViWkfl4hVrmq7RC2KNmCLWC6gvpC+p0RUyC4=",
+  "Hash": "TeuX34CXmRDiuiMYXOmAQby5CQaEBIpR7JXi8Ysj+Fw=",
   "Source": "CommunicatieAppBackend",
   "BasePath": "_content/CommunicatieAppBackend",
   "Mode": "Default",
@@ -136,12 +136,12 @@
       "OriginalItemSpec": "wwwroot\\Image\\Nieuws\\images.jfif"
     },
     {
-      "Identity": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\investeren-repareren-100dpi.2e16d0ba.fill-912x656.jpg",
+      "Identity": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\logoSchild.png",
       "SourceId": "CommunicatieAppBackend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\",
       "BasePath": "_content/CommunicatieAppBackend",
-      "RelativePath": "Image/Nieuws/investeren-repareren-100dpi.2e16d0ba.fill-912x656.jpg",
+      "RelativePath": "Image/Nieuws/logoSchild.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,7 +150,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Image\\Nieuws\\investeren-repareren-100dpi.2e16d0ba.fill-912x656.jpg"
+      "OriginalItemSpec": "wwwroot\\Image\\Nieuws\\logoSchild.png"
+    },
+    {
+      "Identity": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\plaatje.jpg",
+      "SourceId": "CommunicatieAppBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\",
+      "BasePath": "_content/CommunicatieAppBackend",
+      "RelativePath": "Image/Nieuws/plaatje.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\Nieuws\\plaatje.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\topdesklogo.png",
+      "SourceId": "CommunicatieAppBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\",
+      "BasePath": "_content/CommunicatieAppBackend",
+      "RelativePath": "Image/Nieuws/topdesklogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\Nieuws\\topdesklogo.png"
     },
     {
       "Identity": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\js\\site.js",

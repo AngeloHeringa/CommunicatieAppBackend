@@ -19,9 +19,9 @@ public class NieuwsberichtController : Controller
     {
         if (searchString != null)
         {
-            return View(_context.nieuwsberichten.Where(x => x.Titel.Contains(searchString) || searchString == null).ToList());
+            return View(_context.nieuwsberichten.Where(x => x.Titel.Contains(searchString) || searchString == null).Include(m=>m.Locatie).ToList());
         }
-        return View(await _context.nieuwsberichten.ToListAsync());
+        return View(await _context.nieuwsberichten.Include(m=>m.Locatie).ToListAsync());
     }
 
     // GET: nieuwsberichten/Details/5
@@ -45,9 +45,11 @@ public class NieuwsberichtController : Controller
 
     // GET: nieuwsberichten/Create
     // [Route("Create")]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        return View(new NieuwsberichtViewModel{
+            Locaties= await _context.Locaties.ToListAsync()
+        });
     }
 
     // POST: nieuwsberichten/Create
@@ -82,6 +84,7 @@ public class NieuwsberichtController : Controller
                 Inhoud = model.nieuwsbericht.Inhoud,
                 Datum = model.nieuwsbericht.Datum,
                 Image = model.nieuwsbericht.Image,
+                LocatieId = model.nieuwsbericht.LocatieId
                 // ImageLocation = path,
             };
             _context.Add(nieuwsbericht);
@@ -203,7 +206,16 @@ public class NieuwsberichtController : Controller
     public async Task<GetNieuwsberichtDTO> getAll(){
         return new GetNieuwsberichtDTO
         {
-            Nieuwsberichten = await _context.nieuwsberichten.ToListAsync()
+            Nieuwsberichten = await _context.nieuwsberichten.Include(m=>m.Locatie).ToListAsync()
+        };
+    }
+
+    [HttpGet]
+    [Route("Nieuwsbericht/GetByLocatie/{id}")]
+    public async Task<GetNieuwsberichtDTO> getByLocatie(String id){
+        return new GetNieuwsberichtDTO
+        {
+            Nieuwsberichten = await _context.nieuwsberichten.Include(m=>m.Locatie).Where(n=>n.Locatie.name==id).ToListAsync()
         };
     }
 }

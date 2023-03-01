@@ -30,6 +30,18 @@
                 <span asp-validation-for="nieuwsbericht.Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="nieuwsbericht.Locatie"></label>
+                <br/>
+                @Html.DropDownListFor(
+                    m=>m.nieuwsbericht.LocatieId,
+                    new SelectList(Model.Locaties,"Id","name",Model.Locaties.FirstOrDefault()),
+                    "--select--"
+                )
+                @* <label asp-for="Locaties" class="control-label"></label>
+                <input type="datetime-local" asp-for="nieuwsbericht.Datum" class="form-control" value="@defaultdt" />
+                <span asp-validation-for="nieuwsbericht.Datum" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
                 <label asp-for="Foto" class="control-label"></label>
                 <input asp-for="Foto" class="form-control">
                 @* <div id="chooseFile"><input type="file" name="Foto" accept="image/*" /></div> *@
