@@ -1,4 +1,4 @@
-﻿@model CommunicatieAppBackend.Models.Melding
+﻿@model CommunicatieAppBackend.Models.MeldingViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -15,21 +15,29 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @* <input type="hidden" asp-for="MeldingId" /> *@
             <div class="form-group">
-                <label asp-for="Titel" class="control-label"></label>
-                <input asp-for="Titel" class="form-control" />
-                <span asp-validation-for="Titel" class="text-danger"></span>
+                <label asp-for="melding.Titel" class="control-label"></label>
+                <input asp-for="melding.Titel" class="form-control" />
+                <span asp-validation-for="melding.Titel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Inhoud" class="control-label"></label>
-                <input asp-for="Inhoud" class="form-control" />
-                <span asp-validation-for="Inhoud" class="text-danger"></span>
+                <label asp-for="melding.Inhoud" class="control-label"></label>
+                <input asp-for="melding.Inhoud" class="form-control" />
+                <span asp-validation-for="melding.Inhoud" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Datum" class="control-label"></label>
-                <input type="datetime-local" asp-for="Datum" class="form-control" value="@defaultdt" />
-                <span asp-validation-for="Datum" class="text-danger"></span>
+                <label asp-for="melding.Datum" class="control-label"></label>
+                <input type="datetime-local" asp-for="melding.Datum" class="form-control" value="@defaultdt" />
+                <span asp-validation-for="melding.Datum" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="melding.Locatie"></label>
+                <br/>
+                @Html.DropDownListFor(  
+                    m=>m.melding.LocatieId,
+                    new SelectList(Model.Locaties,"Id","name",Model.Locaties.FirstOrDefault()),
+                    "--select--"
+                )
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

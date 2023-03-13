@@ -4,5 +4,17 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Klik <a asp-controller="Melding">hier</a> om meldingen te wijzigen.</p>
+    <p>Klik <a asp-controller="Nieuwsbericht">hier</a> om nieuwsberichten toe te voegen.</p>
+    <p>Klik <a asp-controller="Handleiding">hier</a> om handleidingen te uploaden.</p>    
 </div>
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@@<version>/build/three.module.js"
+    }
+  }
+</script>
+<script src="~/js/threescene.js" type="module"></script>

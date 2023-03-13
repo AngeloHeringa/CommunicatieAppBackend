@@ -29,6 +29,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Datum)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(it=>it.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            <img height="300" src="~/Image/Nieuws/@Html.DisplayFor(model => model.Image)"></img>
+        </dd>
     </dl>
     
     <form asp-controller="Nieuwsbericht" asp-action="Delete">

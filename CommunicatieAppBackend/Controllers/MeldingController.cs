@@ -1,24 +1,29 @@
 using CommunicatieAppBackend.DTOs;
+using CommunicatieAppBackend.Hubs;
 using CommunicatieAppBackend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 
 namespace CommunicatieAppBackend.Controllers;
 public class MeldingController : Controller
 {
     private readonly AppDbContext _context;
+    private IHubContext<NotificationHub> HubContext{ get; set; }
 
-    public MeldingController(AppDbContext context)
+    public MeldingController(AppDbContext context, IHubContext<NotificationHub> hubcontext)
     {
+        HubContext = hubcontext;
         _context = context;
     }
     public async Task<IActionResult> Index(String searchString)
     {
         if (searchString != null)
         {
-            return View(_context.meldingen.Where(x => x.Titel.Contains(searchString) || searchString == null).ToList());
+            return View(_context.meldingen.Where(x => x.Titel.Contains(searchString) || searchString == null).Include(m=>m.Locatie).ToList());
         }
-        return View(await _context.meldingen.ToListAsync());
+        return View(await _context.meldingen.Include(m=>m.Locatie).ToListAsync());
     }
 
     // GET: meldingen/Details/5
@@ -30,7 +35,7 @@ public class MeldingController : Controller
             return NotFound();
         }
 
-        var melding = await _context.meldingen
+        var melding = await _context.meldingen.Include(it=>it.Locatie)
             .FirstOrDefaultAsync(m => m.MeldingId == id);
         if (melding == null)
         {
@@ -42,9 +47,11 @@ public class MeldingController : Controller
 
     // GET: meldingen/Create
     // [Route("Create")]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View();
+        return View(new MeldingViewModel{
+            Locaties= await _context.Locaties.ToListAsync()
+        });
     }
 
     // POST: meldingen/Create
@@ -53,18 +60,27 @@ public class MeldingController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     // [Route("Create")]
-    public async Task<IActionResult> Create([Bind("Titel,Inhoud,Datum")] Melding melding)
+    public async Task<IActionResult> Create(MeldingViewModel model)
     {
-        melding.MeldingId=await _context.meldingen.MaxAsync(it=>it.MeldingId)+1;
-        Console.WriteLine("creating "+melding.MeldingId+"..");
+        model.melding.MeldingId=await _context.meldingen.MaxAsync(it=>it.MeldingId)+1;
+        // Console.WriteLine("creating "+model.melding.MeldingId+"..");
         
-        if (ModelState.IsValid)
+        if (model!=null)
         {
+            var melding = new Melding{
+                MeldingId = model.melding.MeldingId,
+                Titel = model.melding.Titel,
+                Inhoud = model.melding.Inhoud,
+                Datum = model.melding.Datum,
+                LocatieId = model.melding.LocatieId,
+                Locatie = model.melding.Locatie
+            };
             _context.Add(melding);
             await _context.SaveChangesAsync();
+            await HubContext.Clients.All.SendAsync("ReceiveNotification",melding.Titel,melding.Inhoud);
             return RedirectToAction(nameof(Index));
         } else Console.WriteLine("creating failed");
-        return View(melding);
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: meldingen/Edit/5
@@ -81,7 +97,11 @@ public class MeldingController : Controller
         {
             return NotFound();
         }
-        return View(melding);
+        return View(new MeldingViewModel{
+            Locaties= await _context.Locaties.ToListAsync(),
+            melding=melding
+        });
+
     }
 
     // POST: meldingen/Edit/5
@@ -90,34 +110,34 @@ public class MeldingController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]  
     // [Route("Melding/Edit")]  
-    public async Task<IActionResult> Edit(int id, [Bind("MeldingId,Titel,Inhoud,Datum")] Melding melding)
+    public async Task<IActionResult> Edit(int? id, MeldingViewModel mvm)
     {
-        if (id != melding.MeldingId)
+        Console.WriteLine(id+" "+mvm.Locaties.ToJson()+" "+mvm.melding.Titel);
+
+        if (id != mvm.melding.MeldingId)
         {
             return NotFound();
         }
 
-        if (ModelState.IsValid)
+    
+        try
         {
-            try
-            {
-                _context.Update(melding);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!meldingExists(melding.MeldingId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
+            _context.Update(mvm.melding);
+            await _context.SaveChangesAsync();
         }
-        return View(melding);
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!meldingExists(mvm.melding.MeldingId))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return RedirectToAction(nameof(Index));
+        
     }
 
     // GET: meldingen/Delete/5
@@ -129,7 +149,7 @@ public class MeldingController : Controller
             return NotFound();
         }
 
-        var melding = await _context.meldingen
+        var melding = await _context.meldingen.Include(it=>it.Locatie)
             .FirstOrDefaultAsync(m => m.MeldingId == id);
         if (melding == null)
         {
@@ -169,7 +189,17 @@ public class MeldingController : Controller
     public async Task<GetMeldingDTO> getAll(){
         return new GetMeldingDTO
         {
-            Meldingen = await _context.meldingen.ToListAsync()
+            Meldingen = await _context.meldingen.Include(m=>m.Locatie).ToListAsync()
+        };
+    }
+
+    [HttpGet]
+    [Route("Melding/GetByLocatie/{Id}")]
+    public async Task<GetMeldingDTO> getByLocatie(String Id){
+        return new GetMeldingDTO
+        {
+            Meldingen = await _context.meldingen.Include(m=>m.Locatie).Where(n=>n.Locatie.name==Id).ToListAsync()
         };
     }
 }
+ 

@@ -1,4 +1,5 @@
 using CommunicatieAppBackend;
+using CommunicatieAppBackend.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,9 +7,12 @@ builder.Services.AddDbContext<AppDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 
 var app = builder.Build();
+
+app.MapHub<NotificationHub>("/Notification");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
