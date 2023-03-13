@@ -47,7 +47,8 @@
                 @* <div id="chooseFile"><input type="file" name="Foto" accept="image/*" /></div> *@
                 <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
-
+            <input type="hidden" asp-for="nieuwsbericht.Image"/>
+            <input type="hidden" asp-for="Locaties"/>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

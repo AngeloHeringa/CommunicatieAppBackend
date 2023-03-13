@@ -1,4 +1,4 @@
-﻿@model CommunicatieAppBackend.Models.Nieuwsbericht
+﻿@model CommunicatieAppBackend.Models.NieuwsberichtViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,29 +10,53 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Nieuwsbericht" asp-action="Edit">
+        <form enctype="multipart/form-data" asp-controller="Nieuwsbericht" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="NieuwsberichtId" />
+            <input type="hidden" asp-for="nieuwsbericht.NieuwsberichtId" />
             <div class="form-group">
-                <label asp-for="Titel" class="control-label"></label>
-                <input asp-for="Titel" class="form-control" />
-                <span asp-validation-for="Titel" class="text-danger"></span>
+                <label asp-for="nieuwsbericht.Titel" class="control-label"></label>
+                <input asp-for="nieuwsbericht.Titel" class="form-control" />
+                <span asp-validation-for="nieuwsbericht.Titel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Inhoud" class="control-label"></label>
-                <input asp-for="Inhoud" class="form-control" />
-                <span asp-validation-for="Inhoud" class="text-danger"></span>
+                <label asp-for="nieuwsbericht.Inhoud" class="control-label"></label>
+                <input asp-for="nieuwsbericht.Inhoud" class="form-control" />
+                <span asp-validation-for="nieuwsbericht.Inhoud" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Datum" class="control-label"></label>
-                <input asp-for="Datum" class="form-control" />
-                <span asp-validation-for="Datum" class="text-danger"></span>
+                <label asp-for="nieuwsbericht.Datum" class="control-label"></label>
+                <input asp-for="nieuwsbericht.Datum" class="form-control" />
+                <span asp-validation-for="nieuwsbericht.Datum" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="nieuwsbericht.Image" class="control-label"></label>
+                <input asp-for="nieuwsbericht.Image" class="form-control" />
+                <span asp-validation-for="nieuwsbericht.Image" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="nieuwsbericht.Locatie"></label>
+                <input type="hidden" asp-for="nieuwsbericht.Locatie.name"></input>
+                <br/>
+                <input asp-for="Locaties" type="hidden"></input>
+                @Html.DropDownListFor(
+                    m=>m.nieuwsbericht.LocatieId,
+                    new SelectList(Model.Locaties,"Id","name",Model.Locaties.SingleOrDefault(it=>it.Id==Model.nieuwsbericht.LocatieId)),
+                    "--select--"
+                )
+                @* <label asp-for="Locaties" class="control-label"></label>
+                <input type="datetime-local" asp-for="nieuwsbericht.Datum" class="form-control" value="@defaultdt" />
+                <span asp-validation-for="nieuwsbericht.Datum" class="text-danger"></span> *@
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                Nieuwe <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" class="form-control">
+                <label>Huidige foto:</label>
+                <input type="hidden" asp-for="nieuwsbericht.Image" class="form-control">
+                <img height="300" src="~/Image/Nieuws/@Html.DisplayFor(model => model.nieuwsbericht.Image)"></img>
+                @* <div id="chooseFile"><input type="file" name="Foto" accept="image/*" /></div> *@
+                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

@@ -1,6 +1,8 @@
 using CommunicatieAppBackend.DTOs;
+using CommunicatieAppBackend.Hubs;
 using CommunicatieAppBackend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 
@@ -8,16 +10,18 @@ namespace CommunicatieAppBackend.Controllers;
 public class MeldingController : Controller
 {
     private readonly AppDbContext _context;
+    private IHubContext<NotificationHub> HubContext{ get; set; }
 
-    public MeldingController(AppDbContext context)
+    public MeldingController(AppDbContext context, IHubContext<NotificationHub> hubcontext)
     {
+        HubContext = hubcontext;
         _context = context;
     }
     public async Task<IActionResult> Index(String searchString)
     {
         if (searchString != null)
         {
-                return View(_context.meldingen.Where(x => x.Titel.Contains(searchString) || searchString == null).Include(m=>m.Locatie).ToList());
+            return View(_context.meldingen.Where(x => x.Titel.Contains(searchString) || searchString == null).Include(m=>m.Locatie).ToList());
         }
         return View(await _context.meldingen.Include(m=>m.Locatie).ToListAsync());
     }
@@ -31,7 +35,7 @@ public class MeldingController : Controller
             return NotFound();
         }
 
-        var melding = await _context.meldingen
+        var melding = await _context.meldingen.Include(it=>it.Locatie)
             .FirstOrDefaultAsync(m => m.MeldingId == id);
         if (melding == null)
         {
@@ -73,6 +77,7 @@ public class MeldingController : Controller
             };
             _context.Add(melding);
             await _context.SaveChangesAsync();
+            await HubContext.Clients.All.SendAsync("ReceiveNotification",melding.Titel,melding.Inhoud);
             return RedirectToAction(nameof(Index));
         } else Console.WriteLine("creating failed");
         return RedirectToAction(nameof(Index));
@@ -144,7 +149,7 @@ public class MeldingController : Controller
             return NotFound();
         }
 
-        var melding = await _context.meldingen
+        var melding = await _context.meldingen.Include(it=>it.Locatie)
             .FirstOrDefaultAsync(m => m.MeldingId == id);
         if (melding == null)
         {

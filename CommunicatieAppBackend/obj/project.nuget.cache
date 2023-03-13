@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6fHwDN8DFRcA1Z7cHJVTc0cRqtHYuQ2SJR9vwK3tS+bHVvPgx+j0610YWTT6UEt0DIDgPLGvs4OwAeccdhbAkw==",
+  "dgSpecHash": "sjhrBeUpy+hO1eLHzLjPpgz1JEsbUjSNVJ/MIDHA+WeLxOxc4OefK4VBLqt7McdYHuRtEVCnbm3QfCr49I9V0Q==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj",
+  "projectFilePath": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Angelo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Angelo\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

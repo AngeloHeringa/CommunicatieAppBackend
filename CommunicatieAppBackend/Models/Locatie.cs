@@ -6,4 +6,6 @@ public class Locatie{
     public int Id {get;set;}
     public String name {get;set;}
 
+    
+
 }

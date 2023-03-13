@@ -1,0 +1,51 @@
+@model IEnumerable<CommunicatieAppBackend.Models.Handleiding>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Handleidingen</h1>
+<p>
+    <a asp-controller="Handleiding" asp-action="Create">Create New</a>
+</p>
+
+@using (Html.BeginForm("Index", "Handleiding", FormMethod.Get))
+{
+<text>Search:</text> @Html.TextBox("searchString")<input type="submit" name="submit" value="Search" />
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Document)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Details)
+            </td>
+            <td>
+                <a href="Document/Handleiding/@item.Document">@Html.DisplayFor(model => item.Document)</a>
+            </td>
+            <td>
+                <a asp-controller="Handleiding" asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-controller="Handleiding" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-controller="Handleiding" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

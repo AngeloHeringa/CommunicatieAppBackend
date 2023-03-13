@@ -28,6 +28,18 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Datum)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locatie)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locatie.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(it=>it.Image)
+        </dt>
+        <dd>
+            <img height="300" src="~/Image/Nieuws/@Html.DisplayFor(model => model.Image)"></img>
+        </dd>
     </dl>
 </div>
 <div>

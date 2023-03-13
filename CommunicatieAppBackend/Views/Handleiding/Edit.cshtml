@@ -1,0 +1,68 @@
+﻿@model CommunicatieAppBackend.Models.HandleidingViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Handleiding</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-controller="Handleiding" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Handleiding.id" />
+            <div class="form-group">
+                <label asp-for="Handleiding.Title" class="control-label"></label>
+                <input asp-for="Handleiding.Title" class="form-control" />
+                <span asp-validation-for="Handleiding.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Handleiding.Details" class="control-label"></label>
+                <input asp-for="Handleiding.Details" class="form-control" />
+                <span asp-validation-for="Handleiding.Details" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="Handleiding.Datum" class="control-label"></label>
+                <input asp-for="Handleiding.Datum" class="form-control" />
+                <span asp-validation-for="Handleiding.Datum" class="text-danger"></span>
+            </div> *@
+            @* <div class="form-group">
+                <label asp-for="Handleiding.Image" class="control-label"></label>
+                <input asp-for="Handleiding.Image" class="form-control" />
+                <span asp-validation-for="Handleiding.Image" class="text-danger"></span>
+            </div> *@
+            @* <div class="form-group">
+                <label asp-for="Handleiding.Locatie"></label>
+                <input type="hidden" asp-for="Handleiding.Locatie.name"></input>
+                <br/>
+                <input asp-for="Locaties" type="hidden"></input>
+                @Html.DropDownListFor(
+                    m=>m.Handleiding.LocatieId,
+                    new SelectList(Model.Locaties,"Id","name",Model.Locaties.SingleOrDefault(it=>it.Id==Model.Handleiding.LocatieId)),
+                    "--select--"
+                )
+            </div> *@
+            <div class="form-group">
+                Nieuwe <label asp-for="Document" class="control-label"></label>
+                <input asp-for="Document" class="form-control">
+                <input type="hidden" asp-for="Handleiding.Document" class="form-control">
+                @* <div id="chooseFile"><input type="file" name="Foto" accept="image/*" /></div> *@
+                <span asp-validation-for="Document" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

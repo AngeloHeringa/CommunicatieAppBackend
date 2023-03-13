@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj": {}
+    "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj": {
+    "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj",
+        "projectUniqueName": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj",
         "projectName": "CommunicatieAppBackend",
-        "projectPath": "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj",
+        "projectPath": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\CommunicatieAppBackend.csproj",
         "packagesPath": "C:\\Users\\Angelo\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\obj\\",
+        "outputPath": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

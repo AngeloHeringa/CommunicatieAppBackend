@@ -6,14 +6,21 @@ public class AppDbContext : DbContext{
     public DbSet<Melding> meldingen {get;set;}
     public DbSet<Nieuwsbericht> nieuwsberichten {get;set;}
     public DbSet<Locatie> Locaties {get;set;}
+    public DbSet<Handleiding> Handleidingen {get;set;}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=Star123;database=CommunicatieApp",
-                new MariaDbServerVersion(new Version(10, 9, 3)))
+        optionsBuilder.UseMySql("server=communicatieapp.mysql.database.azure.com;port=3306;user=angelo;password=Star1234;database=communicatieapp",
+                new MySqlServerVersion(new Version(5,7)))
             // TODO WHEN DEPLOYING REMOVE THIS!
             .LogTo(Console.WriteLine, LogLevel.Information)
             .EnableDetailedErrors()
             .EnableSensitiveDataLogging();
+        // optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=Star123;database=CommunicatieApp",
+        //         new MariaDbServerVersion(new Version(10, 9, 3)))
+        //     // TODO WHEN DEPLOYING REMOVE THIS!
+        //     .LogTo(Console.WriteLine, LogLevel.Information)
+        //     .EnableDetailedErrors()
+        //     .EnableSensitiveDataLogging();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

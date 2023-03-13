@@ -19,6 +19,29 @@ namespace CommunicatieAppBackend.Migrations
                 .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("CommunicatieAppBackend.Models.Handleiding", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Handleidingen");
+                });
+
             modelBuilder.Entity("CommunicatieAppBackend.Models.Locatie", b =>
                 {
                     b.Property<int>("Id")
@@ -76,7 +99,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             MeldingId = 1,
-                            Datum = new DateTime(2023, 3, 1, 9, 6, 8, 304, DateTimeKind.Local).AddTicks(9400),
+                            Datum = new DateTime(2023, 3, 8, 11, 33, 44, 121, DateTimeKind.Local).AddTicks(5401),
                             Inhoud = "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.",
                             LocatieId = 1,
                             Titel = "Besluit Centraal Stembureau kandidaatlijsten"
@@ -84,7 +107,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             MeldingId = 2,
-                            Datum = new DateTime(2023, 3, 1, 9, 6, 8, 304, DateTimeKind.Local).AddTicks(9435),
+                            Datum = new DateTime(2023, 3, 8, 11, 33, 44, 121, DateTimeKind.Local).AddTicks(5440),
                             Inhoud = "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.",
                             LocatieId = 1,
                             Titel = "Besluit Centraal Stembureau kandidaatlijsten"
@@ -124,7 +147,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             NieuwsberichtId = 1,
-                            Datum = new DateTime(2023, 3, 1, 9, 6, 8, 304, DateTimeKind.Local).AddTicks(9502),
+                            Datum = new DateTime(2023, 3, 8, 11, 33, 44, 121, DateTimeKind.Local).AddTicks(5461),
                             Image = "plaatje.jpg",
                             Inhoud = "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!",
                             LocatieId = 1,
@@ -133,7 +156,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             NieuwsberichtId = 2,
-                            Datum = new DateTime(2023, 3, 1, 9, 6, 8, 304, DateTimeKind.Local).AddTicks(9505),
+                            Datum = new DateTime(2023, 3, 8, 11, 33, 44, 121, DateTimeKind.Local).AddTicks(5464),
                             Image = "plaatje.jpg",
                             Inhoud = "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!",
                             LocatieId = 1,
