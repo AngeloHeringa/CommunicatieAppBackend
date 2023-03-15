@@ -1,6 +1,7 @@
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\CommunicatieAppBackend.exe
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\appsettings.Development.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\appsettings.json
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\package-lock.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\package.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\CommunicatieAppBackend.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\CommunicatieAppBackend.runtimeconfig.json
@@ -8,6 +9,9 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Humanizer.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\MessagePack.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\MessagePack.Annotations.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Bcl.AsyncInterfaces.dll

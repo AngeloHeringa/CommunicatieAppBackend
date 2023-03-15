@@ -1,5 +1,6 @@
 using CommunicatieAppBackend.DTOs;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,13 +16,16 @@ public class HandleidingController : Controller{
         _environment = environment;
     }
 
+    [Authorize(Roles = "Admin")]
     public async Task<ViewResult> Index() => View(await _context.Handleidingen.ToListAsync());
-
-        public async Task<IActionResult> Create()
+    
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Create()
     {
         return View(new HandleidingViewModel());
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(HandleidingViewModel model)
@@ -58,6 +62,7 @@ public class HandleidingController : Controller{
 
     }
 
+    [Authorize(Roles = "Admin")]    
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null || _context.Handleidingen == null)
@@ -85,6 +90,7 @@ public class HandleidingController : Controller{
     // POST: handleidingen/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]  
     // [Route("Handleiding/Edit")]  
@@ -132,6 +138,7 @@ public class HandleidingController : Controller{
         return View(model);
     }
 
+    [Authorize(Roles = "Admin")]
     private bool HandleidingExists(int id)
     {
         return _context.Handleidingen.Any(e => e.id == id);
@@ -140,6 +147,7 @@ public class HandleidingController : Controller{
 
     // GET: handleidingen/Delete/5
     // [Route("Delete")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null || _context.Handleidingen == null)
@@ -160,6 +168,7 @@ public class HandleidingController : Controller{
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     // [Route("DeleteConfirm")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         if (_context.Handleidingen == null)
@@ -186,7 +195,8 @@ public class HandleidingController : Controller{
         };
     }
 
-        public async Task<IActionResult> Details(int? id)
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Details(int? id)
     {
         if (id == null || _context.Handleidingen == null)
         {

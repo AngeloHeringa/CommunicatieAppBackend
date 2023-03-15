@@ -1,8 +1,14 @@
+using System.Security.Policy;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunicatieAppBackend{
-public class AppDbContext : DbContext{
+public class AppDbContext : IdentityDbContext<IdentityUser>{
+    public DbSet<IdentityUser> IdentityUsers {get;set;}
+    public DbSet<IdentityUserRole<string>> IdentityUserRoles {get;set;}
+    public DbSet<IdentityRole> IdentityRoles {get;set;}
     public DbSet<Melding> meldingen {get;set;}
     public DbSet<Nieuwsbericht> nieuwsberichten {get;set;}
     public DbSet<Locatie> Locaties {get;set;}
@@ -37,6 +43,11 @@ public class AppDbContext : DbContext{
             }
         );
 
+        var adminRole = new IdentityRole("Admin");
+        modelBuilder.Entity<IdentityRole>().HasData(
+            adminRole
+        );        
+
         modelBuilder.Entity<Melding>().HasData(
             new Melding{
                 MeldingId=1, Titel="Besluit Centraal Stembureau kandidaatlijsten", Inhoud="In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", Datum=DateTime.Now, LocatieId=1
@@ -53,6 +64,24 @@ public class AppDbContext : DbContext{
                 NieuwsberichtId=2, Titel="Verkiezingen, wat kun jij doen…..?!", Inhoud="Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", Datum=DateTime.Now, Image="plaatje.jpg", LocatieId=1
             }
         );
+        var admin = new IdentityUser{
+            UserName = "admin",
+            Email="admin@admin",
+            EmailConfirmed = true,
+            NormalizedUserName = "ADMIN@ADMIN",
+            NormalizedEmail = "ADMIN@ADMIN"
+        };
 
+            
+        admin.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(admin,"AdminPassword");
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>{
+                RoleId=adminRole.Id,
+                UserId=admin.Id
+            }
+        );
+
+        modelBuilder.Entity<IdentityUser>().HasData(admin);
+    
     }
 }}

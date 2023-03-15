@@ -3,18 +3,33 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Klik <a asp-controller="Melding">hier</a> om meldingen te wijzigen.</p>
-    <p>Klik <a asp-controller="Nieuwsbericht">hier</a> om nieuwsberichten toe te voegen.</p>
-    <p>Klik <a asp-controller="Handleiding">hier</a> om handleidingen te uploaden.</p>    
+    <h1 class="display-4">Welkom</h1>
+    @if ((bool)ViewData["isLoggedIn"]){
+      <h4 class="blockquote">Ingelogd als @ViewData["username"]</h4>
+      <div class="container">
+        <a asp-controller="Melding" class="btn btn-sq-lg btn-primary p-4 col-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+          </svg>
+          <br>Meldingen<br>beheren
+        </a>
+        <a asp-controller="Nieuwsbericht" class="btn btn-sq-lg btn-primary p-4 col-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+            <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+            <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+          </svg>
+          <br>Nieuwsberichten<br>beheren
+        </a>
+        <a asp-controller="Handleiding" class="btn btn-sq-lg btn-primary p-4 col-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+          </svg>
+          <br>Handleidingen<br>beheren
+        </a>
+      </div>
+    }else {
+      <a asp-area="Identity" asp-page="/Account/Login">Login</a><span> als beheerder de data te beheren</span>
+    }
 </div>
 <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
-<script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@@<version>/build/three.module.js"
-    }
-  }
-</script>
-<script src="~/js/threescene.js" type="module"></script>

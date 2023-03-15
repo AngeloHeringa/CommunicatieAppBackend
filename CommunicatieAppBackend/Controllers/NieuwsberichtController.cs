@@ -1,6 +1,7 @@
 using CommunicatieAppBackend.DTOs;
 using CommunicatieAppBackend.Hubs;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ public class NieuwsberichtController : Controller
         _environment = environment;
     }
 
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index(String searchString)
     {
         if (searchString != null)
@@ -32,6 +34,7 @@ public class NieuwsberichtController : Controller
 
     // GET: nieuwsberichten/Details/5
     // [Route("Details")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null || _context.nieuwsberichten == null)
@@ -51,6 +54,7 @@ public class NieuwsberichtController : Controller
 
     // GET: nieuwsberichten/Create
     // [Route("Create")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create()
     {
         return View(new NieuwsberichtViewModel{
@@ -64,6 +68,7 @@ public class NieuwsberichtController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     // [Route("Create")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(NieuwsberichtViewModel model)
     {
         if (model.Foto == null || model.Foto.Length == 0)
@@ -113,6 +118,7 @@ public class NieuwsberichtController : Controller
 
     // GET: nieuwsberichten/Edit/5
     // [Route("Nieuwsbericht/Edit")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null || _context.nieuwsberichten == null)
@@ -144,6 +150,7 @@ public class NieuwsberichtController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]  
     // [Route("Nieuwsbericht/Edit")]  
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Edit(int id, NieuwsberichtViewModel model)
     {
         // Console.WriteLine(nieuwsberichtViewModel.Locaties.First());
@@ -210,6 +217,7 @@ public class NieuwsberichtController : Controller
 
     // GET: nieuwsberichten/Delete/5
     // [Route("Delete")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null || _context.nieuwsberichten == null)
@@ -231,6 +239,7 @@ public class NieuwsberichtController : Controller
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     // [Route("DeleteConfirm")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         if (_context.nieuwsberichten == null)
@@ -247,6 +256,7 @@ public class NieuwsberichtController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     private bool NieuwsberichtExists(int id)
     {
         return _context.nieuwsberichten.Any(e => e.NieuwsberichtId == id);

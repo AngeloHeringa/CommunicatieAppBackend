@@ -1,13 +1,14 @@
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\CommunicatieAppBackend.exe
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\CommunicatieAppBackend.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.pdb
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\appsettings.json
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\package-lock.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\package.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\CommunicatieAppBackend.staticwebassets.runtime.json
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\CommunicatieAppBackend.deps.json
@@ -17,6 +18,7 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Humanizer.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\MessagePack.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\MessagePack.Annotations.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -40,6 +42,7 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.DiaSymReader.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
@@ -59,6 +62,7 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\NuGet.Common.dll
@@ -70,6 +74,7 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\System.Composition.Convention.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\System.Composition.Hosting.dll
@@ -255,6 +260,7 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\o
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.AssemblyInfoInputs.cache
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.AssemblyInfo.cs
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.csproj.CoreCompileInputs.cache
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.RazorAssemblyInfo.cache
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.RazorAssemblyInfo.cs
@@ -266,5 +272,4 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\o
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.csproj.CopyComplete
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\ref\CommunicatieAppBackend.dll
-C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.pdb
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.genruntimeconfig.cache

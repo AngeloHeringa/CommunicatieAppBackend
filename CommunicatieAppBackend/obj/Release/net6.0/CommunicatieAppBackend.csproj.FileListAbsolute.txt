@@ -268,3 +268,8 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\o
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Release\net6.0\CommunicatieAppBackend.pdb
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Release\net6.0\CommunicatieAppBackend.genruntimeconfig.cache
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\package.json
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\package-lock.json
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Release\net6.0\CommunicatieAppBackend.MvcApplicationPartsAssemblyInfo.cs

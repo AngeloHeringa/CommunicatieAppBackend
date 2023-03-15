@@ -1,6 +1,7 @@
 using CommunicatieAppBackend.DTOs;
 using CommunicatieAppBackend.Hubs;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ public class MeldingController : Controller
         HubContext = hubcontext;
         _context = context;
     }
+    
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index(String searchString)
     {
         if (searchString != null)
@@ -28,6 +31,7 @@ public class MeldingController : Controller
 
     // GET: meldingen/Details/5
     // [Route("Details")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null || _context.meldingen == null)
@@ -47,6 +51,7 @@ public class MeldingController : Controller
 
     // GET: meldingen/Create
     // [Route("Create")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create()
     {
         return View(new MeldingViewModel{
@@ -60,6 +65,7 @@ public class MeldingController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     // [Route("Create")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(MeldingViewModel model)
     {
         model.melding.MeldingId=await _context.meldingen.MaxAsync(it=>it.MeldingId)+1;
@@ -85,6 +91,7 @@ public class MeldingController : Controller
 
     // GET: meldingen/Edit/5
     // [Route("Melding/Edit")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null || _context.meldingen == null)
@@ -110,6 +117,7 @@ public class MeldingController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]  
     // [Route("Melding/Edit")]  
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Edit(int? id, MeldingViewModel mvm)
     {
         Console.WriteLine(id+" "+mvm.Locaties.ToJson()+" "+mvm.melding.Titel);
@@ -142,6 +150,7 @@ public class MeldingController : Controller
 
     // GET: meldingen/Delete/5
     // [Route("Delete")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null || _context.meldingen == null)
@@ -163,6 +172,7 @@ public class MeldingController : Controller
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     // [Route("DeleteConfirm")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         if (_context.meldingen == null)
@@ -179,6 +189,7 @@ public class MeldingController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     private bool meldingExists(int id)
     {
         return _context.meldingen.Any(e => e.MeldingId == id);
