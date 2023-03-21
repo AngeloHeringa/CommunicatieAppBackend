@@ -283,12 +283,12 @@ namespace CommunicatieAppBackend.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "85cc62a6-3e62-4214-a7d6-9ae9de671d38", "5984f341-a202-49f6-b0be-c84e43c30251", "Admin", null });
+                values: new object[] { "53e06227-249b-46f6-9e37-f52f16084d7e", "1f612ce6-3e9d-48fd-9d4a-7edc1c0093ab", "Admin", null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "e35d2174-6adf-468e-bf8c-f8775225fb8c", 0, "392d89d1-75f1-4b96-bfdd-18b35363bbc7", "admin@admin", true, false, null, "ADMIN@ADMIN", "ADMIN@ADMIN", "AQAAAAEAACcQAAAAEMvdxIqsR4zU1hgliLbRePDYkwfrHurSdst+qxLAVHabwgDtXzTMwN6ypHbyi+Y+MQ==", null, false, "cb26ab27-2b7c-43c9-b143-6927c7f2f449", false, "admin" });
+                values: new object[] { "fd077172-3049-4855-b767-b1c11c14a9a0", 0, "d9421b7e-71f5-45f1-abf7-85da48fe41bc", "admin@admin", true, false, null, "ADMIN@ADMIN", "ADMIN@ADMIN", "AQAAAAEAACcQAAAAEKhEXeAwkigfvQkgGn1izoFK/ZhC4bVnhUJjUsBbbs2auKVCMff1A+8sLbxYaclNlw==", null, false, "31557cd9-5c0b-4999-af95-100423136ce5", false, "admin@admin" });
 
             migrationBuilder.InsertData(
                 table: "Locaties",
@@ -302,15 +302,15 @@ namespace CommunicatieAppBackend.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "85cc62a6-3e62-4214-a7d6-9ae9de671d38", "e35d2174-6adf-468e-bf8c-f8775225fb8c" });
+                values: new object[] { "53e06227-249b-46f6-9e37-f52f16084d7e", "fd077172-3049-4855-b767-b1c11c14a9a0" });
 
             migrationBuilder.InsertData(
                 table: "meldingen",
                 columns: new[] { "MeldingId", "Datum", "Inhoud", "LocatieId", "Titel" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6497), "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", 1, "Besluit Centraal Stembureau kandidaatlijsten" },
-                    { 2, new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6533), "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", 1, "Besluit Centraal Stembureau kandidaatlijsten" }
+                    { 1, new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6240), "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", 1, "Besluit Centraal Stembureau kandidaatlijsten" },
+                    { 2, new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6275), "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", 1, "Besluit Centraal Stembureau kandidaatlijsten" }
                 });
 
             migrationBuilder.InsertData(
@@ -318,8 +318,8 @@ namespace CommunicatieAppBackend.Migrations
                 columns: new[] { "NieuwsberichtId", "Datum", "Image", "Inhoud", "LocatieId", "Titel" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6555), "plaatje.jpg", "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", 1, "Verkiezingen, wat kun jij doen…..?!" },
-                    { 2, new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6558), "plaatje.jpg", "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", 1, "Verkiezingen, wat kun jij doen…..?!" }
+                    { 1, new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6294), "plaatje.jpg", "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", 1, "Verkiezingen, wat kun jij doen…..?!" },
+                    { 2, new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6298), "plaatje.jpg", "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", 1, "Verkiezingen, wat kun jij doen…..?!" }
                 });
 
             migrationBuilder.CreateIndex(

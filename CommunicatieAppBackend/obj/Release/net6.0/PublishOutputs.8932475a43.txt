@@ -10,6 +10,8 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\MessagePack.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\MessagePack.Annotations.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.AspNetCore.JsonPatch.dll
@@ -40,7 +42,11 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.Identity.Client.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Microsoft.IdentityModel.Logging.dll
@@ -76,8 +82,10 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Composition.Runtime.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Composition.TypedParts.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Configuration.ConfigurationManager.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Drawing.Common.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Reflection.MetadataLoadContext.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Runtime.Caching.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Security.Permissions.dll

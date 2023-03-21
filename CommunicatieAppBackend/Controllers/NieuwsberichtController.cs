@@ -1,6 +1,7 @@
 using CommunicatieAppBackend.DTOs;
 using CommunicatieAppBackend.Hubs;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -264,7 +265,8 @@ public class NieuwsberichtController : Controller
 
     [HttpGet]
     [Route("Nieuwsbericht/Get")]
-    public async Task<GetNieuwsberichtDTO> getAll(){
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<GetNieuwsberichtDTO> getAll(){    
         return new GetNieuwsberichtDTO
         {
             Nieuwsberichten = await _context.nieuwsberichten.Include(m=>m.Locatie).ToListAsync()
@@ -273,6 +275,7 @@ public class NieuwsberichtController : Controller
 
     [HttpGet]
     [Route("Nieuwsbericht/GetByLocatie/{id}")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public async Task<GetNieuwsberichtDTO> getByLocatie(String id){
         return new GetNieuwsberichtDTO
         {

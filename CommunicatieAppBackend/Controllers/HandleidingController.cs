@@ -1,5 +1,6 @@
 using CommunicatieAppBackend.DTOs;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -188,6 +189,7 @@ public class HandleidingController : Controller{
 
     [HttpGet]
     [Route("Handleiding/Get")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public async Task<GetHandleidingDTO> getAll(){
         return new GetHandleidingDTO
         {
@@ -196,6 +198,7 @@ public class HandleidingController : Controller{
     }
 
     [Authorize(Roles = "Admin")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null || _context.Handleidingen == null)
@@ -211,6 +214,4 @@ public class HandleidingController : Controller{
 
         return View(handleiding);
     }
-
-
 } 

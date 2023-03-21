@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommunicatieAppBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230314130433_mig")]
+    [Migration("20230316130430_mig")]
     partial class mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             MeldingId = 1,
-                            Datum = new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6497),
+                            Datum = new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6240),
                             Inhoud = "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.",
                             LocatieId = 1,
                             Titel = "Besluit Centraal Stembureau kandidaatlijsten"
@@ -109,7 +109,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             MeldingId = 2,
-                            Datum = new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6533),
+                            Datum = new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6275),
                             Inhoud = "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.",
                             LocatieId = 1,
                             Titel = "Besluit Centraal Stembureau kandidaatlijsten"
@@ -149,7 +149,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             NieuwsberichtId = 1,
-                            Datum = new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6555),
+                            Datum = new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6294),
                             Image = "plaatje.jpg",
                             Inhoud = "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!",
                             LocatieId = 1,
@@ -158,7 +158,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             NieuwsberichtId = 2,
-                            Datum = new DateTime(2023, 3, 14, 14, 4, 33, 303, DateTimeKind.Local).AddTicks(6558),
+                            Datum = new DateTime(2023, 3, 16, 14, 4, 30, 542, DateTimeKind.Local).AddTicks(6298),
                             Image = "plaatje.jpg",
                             Inhoud = "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!",
                             LocatieId = 1,
@@ -194,8 +194,8 @@ namespace CommunicatieAppBackend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "85cc62a6-3e62-4214-a7d6-9ae9de671d38",
-                            ConcurrencyStamp = "5984f341-a202-49f6-b0be-c84e43c30251",
+                            Id = "53e06227-249b-46f6-9e37-f52f16084d7e",
+                            ConcurrencyStamp = "1f612ce6-3e9d-48fd-9d4a-7edc1c0093ab",
                             Name = "Admin"
                         });
                 });
@@ -289,19 +289,19 @@ namespace CommunicatieAppBackend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e35d2174-6adf-468e-bf8c-f8775225fb8c",
+                            Id = "fd077172-3049-4855-b767-b1c11c14a9a0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "392d89d1-75f1-4b96-bfdd-18b35363bbc7",
+                            ConcurrencyStamp = "d9421b7e-71f5-45f1-abf7-85da48fe41bc",
                             Email = "admin@admin",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN",
                             NormalizedUserName = "ADMIN@ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMvdxIqsR4zU1hgliLbRePDYkwfrHurSdst+qxLAVHabwgDtXzTMwN6ypHbyi+Y+MQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKhEXeAwkigfvQkgGn1izoFK/ZhC4bVnhUJjUsBbbs2auKVCMff1A+8sLbxYaclNlw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cb26ab27-2b7c-43c9-b143-6927c7f2f449",
+                            SecurityStamp = "31557cd9-5c0b-4999-af95-100423136ce5",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            UserName = "admin@admin"
                         });
                 });
 
@@ -367,8 +367,8 @@ namespace CommunicatieAppBackend.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "e35d2174-6adf-468e-bf8c-f8775225fb8c",
-                            RoleId = "85cc62a6-3e62-4214-a7d6-9ae9de671d38"
+                            UserId = "fd077172-3049-4855-b767-b1c11c14a9a0",
+                            RoleId = "53e06227-249b-46f6-9e37-f52f16084d7e"
                         });
                 });
 

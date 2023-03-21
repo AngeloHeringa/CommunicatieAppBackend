@@ -1,6 +1,7 @@
 using CommunicatieAppBackend.DTOs;
 using CommunicatieAppBackend.Hubs;
 using CommunicatieAppBackend.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -197,6 +198,7 @@ public class MeldingController : Controller
 
     [HttpGet]
     [Route("Melding/Get")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public async Task<GetMeldingDTO> getAll(){
         return new GetMeldingDTO
         {
@@ -206,6 +208,7 @@ public class MeldingController : Controller
 
     [HttpGet]
     [Route("Melding/GetByLocatie/{Id}")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
     public async Task<GetMeldingDTO> getByLocatie(String Id){
         return new GetMeldingDTO
         {

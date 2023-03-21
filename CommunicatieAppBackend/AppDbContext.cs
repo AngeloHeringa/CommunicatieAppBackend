@@ -65,7 +65,7 @@ public class AppDbContext : IdentityDbContext<IdentityUser>{
             }
         );
         var admin = new IdentityUser{
-            UserName = "admin",
+            UserName = "admin@admin",
             Email="admin@admin",
             EmailConfirmed = true,
             NormalizedUserName = "ADMIN@ADMIN",
