@@ -286,3 +286,5 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\o
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.pdb
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\CommunicatieAppBackend.genruntimeconfig.cache
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\obj\Debug\net6.0\ref\CommunicatieAppBackend.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\SendGrid.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Debug\net6.0\StarkbankEcdsa.dll

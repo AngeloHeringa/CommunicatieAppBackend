@@ -1,0 +1,41 @@
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser> 
+
+@{
+    ViewData["Title"] = "Index";
+
+    var count = Model.Count();
+}
+
+<h1>
+    Nieuwe aanmeldingen goedkeuren (@count nieuwe aanvragen)
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.UserName)
+            </td>
+            <td>
+                <a class="btn btn-success" asp-controller="Account" asp-action="Approve" asp-route-id="@item.Id">Goedkeuren</a> |
+                <a class="btn btn-danger" asp-controller="Account" asp-action="Deny" asp-route-id="@item.Id">Afwijzen</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <!-- <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput> -->
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>130df068-b25b-4019-b44a-f48a0d9b699a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
       <!-- <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
