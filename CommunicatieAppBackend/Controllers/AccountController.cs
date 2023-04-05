@@ -16,6 +16,7 @@ using CommunicatieAppBackend.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace CommunicatieAppBackend.Controllers;
 [Route("[controller]/[action]")]
@@ -147,7 +148,8 @@ public class AccountController : Controller
             NormalizedUserName = model.Username!.ToUpper(),
             Email = model.Email,
             NormalizedEmail = model.Email!.ToUpper(),
-            EmailConfirmed = false
+            EmailConfirmed = false,
+            LockoutEnd = DateTime.Now.AddYears(99)
         };
 
         var result = await _userManager.CreateAsync(user, model.Password);
@@ -179,7 +181,7 @@ public class AccountController : Controller
     
     [HttpPost]
     [AllowAnonymous]
-    [Route("Account/Login")]
+    [ActionName("Login")]
     public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
     {
         System.Diagnostics.Trace.TraceInformation("Login post");
@@ -224,7 +226,7 @@ public class AccountController : Controller
 
     [HttpGet]
     [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
-    [Route("Account/Data")]
+    [ActionName("data")]
     public async Task<IActionResult> GetUserData()
     {
         Console.WriteLine(User.Identity.Name);
