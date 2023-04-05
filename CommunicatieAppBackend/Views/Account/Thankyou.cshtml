@@ -1,0 +1,14 @@
+@model string
+@{
+    ViewData["Title"] = "Bedankt!";
+}
+
+<h1>@ViewData["Title"]</h1><br/>
+
+@if (Model=="confirm"){
+    <h2>Uw email is succesvol geverifieerd</h2>
+    <p>U wordt nog op de hoogte gehouden via mail wanneer uw account is geaccepteerd door de beheerder, zodat u ermee kunt inloggen.</p>
+}else{
+    <h2>Oeps</h2>
+    <p>Er is iets misgegaan, neem a.u.b. contact op met de beheerder.</p>
+}

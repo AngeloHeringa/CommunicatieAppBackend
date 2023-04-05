@@ -17,12 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("CommunicatieAppBackendIdentityDbContextConnection") ?? throw new InvalidOperationException("Connection string 'CommunicatieAppBackendIdentityDbContextConnection' not found.");
 
 builder.Services.AddDbContext<AppDbContext>();
-builder.Services.AddTransient<CustomEmailConfirmationTokenProvider<IdentityUser>>();
-builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>{ 
     options.SignIn.RequireConfirmedAccount = true;
-    options.SignIn.RequireConfirmedEmail = true;
+    // options.SignIn.RequireConfirmedEmail = true;
     options.Tokens.ProviderMap.Add("CustomEmailConfirmation",
         new TokenProviderDescriptor(
             typeof(CustomEmailConfirmationTokenProvider<IdentityUser>)));
@@ -31,6 +29,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>{
     // options.Tokens.EmailConfirmationTokenProvider = "emailconfirmation";
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultUI();
 // .AddTokenProvider<EmailConfirmationTokenProvider<IdentityUser>>("emailconfirmation");
+
+builder.Services.AddTransient<CustomEmailConfirmationTokenProvider<IdentityUser>>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
 
 builder.Services.Configure<EmailConfirmationTokenProviderOptions>(opt =>
      opt.TokenLifespan = TimeSpan.FromDays(3));

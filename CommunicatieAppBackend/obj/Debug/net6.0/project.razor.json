@@ -18524,6 +18524,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\Views\\Account\\Thankyou.cshtml",
+      "TargetPath": "Views\\Account\\Thankyou.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\Views\\Nieuwsbericht\\Details.cshtml",
       "TargetPath": "Views\\Nieuwsbericht\\Details.cshtml",
       "FileKind": "mvc"

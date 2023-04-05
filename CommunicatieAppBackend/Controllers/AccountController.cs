@@ -13,8 +13,12 @@ using NuGet.Protocol;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using CommunicatieAppBackend.Services;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace CommunicatieAppBackend.Controllers;
+[Route("[controller]/[action]")]
 public class AccountController : Controller
 {
     private readonly ILogger<AccountController> _logger;
@@ -37,7 +41,7 @@ public class AccountController : Controller
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index() {
 
-        return View(await _userManager.Users.Where(it=>it.LockoutEnabled==true).ToListAsync());
+        return View(await _userManager.Users.Where(it=>it.LockoutEnabled==true&&it.EmailConfirmed==true).ToListAsync());
     }
 
     [HttpGet]
@@ -53,7 +57,10 @@ public class AccountController : Controller
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> ApproveConfirm(string id){
         var toApprove = await _userManager.FindByIdAsync(id);
-        toApprove.LockoutEnabled=true;
+        toApprove.LockoutEnabled=false;
+
+        await _emailSender.SendEmailAsync(toApprove.Email, "Aanmelding geaccepteerd",
+            $"Uw aanmelding voor een account is geaccepteerd door de beheerder van de app. U kunt nu terug naar de app gaan om in te loggen.");
 
         await _userManager.UpdateAsync(toApprove);
 
@@ -63,6 +70,7 @@ public class AccountController : Controller
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Deny(string? id){
         var toDeny = await _userManager.FindByIdAsync(id);
+        
 
         return View(toDeny);
     }
@@ -72,6 +80,9 @@ public class AccountController : Controller
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DenyConfirm(string id){
         var toDeny= await _userManager.FindByIdAsync(id);
+
+        await _emailSender.SendEmailAsync(toDeny.Email, "Aanmelding afgewezen",
+            $"Uw aanmelding voor een account is afgewezen door de beheerder van de app.");
 
         await _userManager.DeleteAsync(toDeny);
 
@@ -86,13 +97,40 @@ public class AccountController : Controller
     //     return View();
     // }
 
-    public string ConfirmEmail(){
-        return "success?";
+    public async Task<IActionResult> ConfirmEmail(string userid, string code)
+    {            
+        var token= code;
+        _logger.Log(LogLevel.Debug,code);
+        var decodedTokenString = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token));
+
+        IdentityUser user = await _userManager.FindByIdAsync(userid);
+        if(user != null)
+        {
+            IdentityResult result = await _userManager.ConfirmEmailAsync(user, decodedTokenString);
+            
+            if (result.Succeeded)
+            {        
+                return Redirect("/Account/Thankyou?status=confirm");
+            }
+            else
+            {                    
+                return Redirect("/Account/Thankyou?status=" + result.Errors.ToArray()[0].Description);                    
+            }
+        }
+        else
+        {
+            return Redirect("/Account/Thankyou?status=Invalid User");
+        }
+
+    } 
+
+    [AllowAnonymous]
+    public IActionResult Thankyou(string status){
+        return View(nameof(Thankyou),status);
     }
 
-    [HttpPost]
+    [HttpPost, ActionName("Register")]
     [AllowAnonymous]
-    [Route("Account/Register")]
     public async Task<IActionResult> RegisterUser([FromBody] RegisterDTO model)
     {
         // TODO Probably do some basic filtering here in regard to the input?
@@ -112,12 +150,24 @@ public class AccountController : Controller
             EmailConfirmed = false
         };
 
-        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-        var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email }, Request.Scheme);
-        await _emailSender.SendEmailAsync(user.Email, "Confirmation email link", "Beste gebruiker, \nKlik op de link om uw account te bevestigen: "+confirmationLink);
-
-        
         var result = await _userManager.CreateAsync(user, model.Password);
+
+// var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        // var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email }, Request.Scheme);
+        // await _emailSender.SendEmailAsync(user.Email, "Confirmation email link", "Beste gebruiker, \nKlik op de link om uw account te bevestigen: "+confirmationLink);
+        var userId = await _userManager.GetUserIdAsync(user);
+        var returnUrl = Url.Content("~/");
+        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        _logger.Log(LogLevel.Debug,code);
+        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+        var callbackUrl = Url.Action(new UrlActionContext{
+            Action = nameof(ConfirmEmail),
+            Controller = "Account",
+            Values= new { userId = userId, code = code, returnUrl = returnUrl },
+            Protocol= Request.Scheme});
+
+        await _emailSender.SendEmailAsync(user.Email, "Confirm your email",
+            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
         if (result.Succeeded)
         {
