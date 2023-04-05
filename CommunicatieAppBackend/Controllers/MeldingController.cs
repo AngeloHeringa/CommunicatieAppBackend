@@ -215,5 +215,31 @@ public class MeldingController : Controller
             Meldingen = await _context.meldingen.Include(m=>m.Locatie).Where(n=>n.Locatie.name==Id).ToListAsync()
         };
     }
+
+    [HttpPost]
+    [Route("Melding/ApiCreate")]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> Create([FromBody] MeldingDTO model){
+        if (!ModelState.IsValid){
+            return BadRequest();
+        }
+
+        Locatie locatie = await _context.Locaties.SingleAsync(it=>it.name==model.Locatie);
+        int MeldingId=await _context.meldingen.MaxAsync(it=>it.MeldingId)+1;
+
+        Melding melding = new Melding{
+            Titel = model.Titel,
+            Inhoud= model.Inhoud,
+            Locatie = locatie,
+            LocatieId = locatie.Id,
+            MeldingId = MeldingId,
+            Datum = DateTime.Now
+        };
+
+        _context.Add(melding);
+        await _context.SaveChangesAsync();
+        await HubContext.Clients.All.SendAsync("ReceiveNotification",melding.Titel,melding.Inhoud);
+        
+        return Ok();
+    }
 }
- 

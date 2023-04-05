@@ -76,6 +76,8 @@ C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\b
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\NuGet.Protocol.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\NuGet.Versioning.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\SendGrid.dll
+C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\StarkbankEcdsa.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Composition.AttributedModel.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Composition.Convention.dll
 C:\Users\Angelo\Documents\GitHub\CommunicatieAppBackend\CommunicatieAppBackend\bin\Release\net6.0\publish\System.Composition.Hosting.dll

@@ -13,20 +13,8 @@
       "PackagePath": "staticwebassets\\Document\\Handleiding\\portefolio van meneer Heringa.docx"
     },
     {
-      "Id": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Hello World,.svg",
-      "PackagePath": "staticwebassets\\Image\\Hello World,.svg"
-    },
-    {
-      "Id": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\download.jfif",
-      "PackagePath": "staticwebassets\\Image\\Nieuws\\download.jfif"
-    },
-    {
-      "Id": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\images.jfif",
-      "PackagePath": "staticwebassets\\Image\\Nieuws\\images.jfif"
-    },
-    {
-      "Id": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\teslaLogo.png",
-      "PackagePath": "staticwebassets\\Image\\Nieuws\\teslaLogo.png"
+      "Id": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\Image\\Nieuws\\plaatje.jpg",
+      "PackagePath": "staticwebassets\\Image\\Nieuws\\plaatje.jpg"
     },
     {
       "Id": "C:\\Users\\Angelo\\Documents\\GitHub\\CommunicatieAppBackend\\CommunicatieAppBackend\\wwwroot\\css\\site.css",
