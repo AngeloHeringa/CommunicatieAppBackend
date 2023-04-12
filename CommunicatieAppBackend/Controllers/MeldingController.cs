@@ -53,6 +53,7 @@ public class MeldingController : Controller
     // GET: meldingen/Create
     // [Route("Create")]
     [Authorize(Roles = "Admin")]
+    [Route("Melding/Create")]
     public async Task<IActionResult> Create()
     {
         return View(new MeldingViewModel{
@@ -65,7 +66,7 @@ public class MeldingController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    // [Route("Create")]
+    [Route("Melding/Create")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create(MeldingViewModel model)
     {
@@ -219,7 +220,7 @@ public class MeldingController : Controller
     [HttpPost]
     [Route("Melding/ApiCreate")]
     [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
-    public async Task<IActionResult> Create([FromBody] MeldingDTO model){
+    public async Task<IActionResult> ApiCreate([FromBody] MeldingDTO model){
         if (!ModelState.IsValid){
             return BadRequest();
         }
