@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using CommunicatieAppBackend.Models;
 
 namespace CommunicatieAppBackend.Controllers;
 [Route("[controller]/[action]")]
@@ -107,7 +108,7 @@ public class AccountController : Controller
         IdentityUser user = await _userManager.FindByIdAsync(userid);
         if(user != null)
         {
-            IdentityResult result = await _userManager.ConfirmEmailAsync(user, decodedTokenString);
+            IdentityResult result = await _userManager.ConfirmEmailAsync(user, token);
             
             if (result.Succeeded)
             {        
@@ -124,11 +125,86 @@ public class AccountController : Controller
         }
 
     } 
+    
+
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<bool> NewPassword([FromBody]ChangePasswordDTO dto)
+    {            
+
+        IdentityUser user = await _userManager.FindByEmailAsync(dto.email);
+        if(user != null)
+        {
+            String code = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            var callbackUrl = Url.Action(new UrlActionContext{
+                Action = nameof(NewPasswordForm),
+                Controller = "Account",
+                Values= new { userId = user.Id, code = code, password = user.PasswordHash, returnUrl = Url.Content("~/") },
+                Protocol= Request.Scheme});
+
+            await _emailSender.SendEmailAsync(user.Email, "Change your password",
+                $"Please change your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+            
+            return true;
+        }
+        return false;
+    } 
+
+    
+    public async Task<IActionResult> NewPasswordForm(string userid, string code)
+    {            
+        IdentityUser user = await _userManager.FindByIdAsync(userid);
+        if(user != null)
+        {
+            NewPasswordViewModel vm = new NewPasswordViewModel{userId=user.Id, code=code};
+            return View(vm);
+        }
+
+        return NotFound();
+    } 
+
+    [ValidateAntiForgeryToken]
+    [HttpPost]
+    public async Task<IActionResult> NewPasswordConfirm(NewPasswordViewModel vm)
+    {
+        if(!ModelState.IsValid){
+            return View(vm);
+        }
+        var token= vm.code;
+        _logger.Log(LogLevel.Debug,token);
+        var decodedTokenString = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token));
+
+        IdentityUser user = await _userManager.FindByIdAsync(vm.userId);
+        if(user != null)
+        {
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, decodedTokenString, vm.NewPassword);
+            
+            if (result.Succeeded)
+            {        
+                return Redirect("/Account/Thankyou?status=confirmPass");
+            }
+            else
+            {                    
+                return Redirect("/Account/Thankyou?status=" + result.Errors.ToArray()[0].Description);                    
+            }
+        }
+        else
+        {
+            return Redirect("/Account/Thankyou?status=Invalid User");
+        }
+
+    } 
+
+
 
     [AllowAnonymous]
     public IActionResult Thankyou(string status){
         return View(nameof(Thankyou),status);
     }
+
+
 
     [HttpPost, ActionName("Register")]
     [AllowAnonymous]

@@ -8,7 +8,11 @@
 @if (Model=="confirm"){
     <h2>Uw email is succesvol geverifieerd</h2>
     <p>U wordt nog op de hoogte gehouden via mail wanneer uw account is geaccepteerd door de beheerder, zodat u ermee kunt inloggen.</p>
+}else if (Model=="confirmPass"){
+    <h2>Uw wachtwoord is succesvol bijgewerkt</h2>
+    <p>U kunt nu in de app inloggen met het nieuwe wachtwoord.</p>
 }else{
     <h2>Oeps</h2>
     <p>Er is iets misgegaan, neem a.u.b. contact op met de beheerder.</p>
+    <p class="text-danger">@Model</p>
 }

@@ -27,7 +27,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>{
     options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
 
     // options.Tokens.EmailConfirmationTokenProvider = "emailconfirmation";
-}).AddEntityFrameworkStores<AppDbContext>().AddDefaultUI();
+}).AddEntityFrameworkStores<AppDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 // .AddTokenProvider<EmailConfirmationTokenProvider<IdentityUser>>("emailconfirmation");
 
 builder.Services.AddTransient<CustomEmailConfirmationTokenProvider<IdentityUser>>();
