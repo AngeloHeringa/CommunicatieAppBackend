@@ -4,6 +4,7 @@ using CommunicatieAppBackend.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace CommunicatieAppBackend.Controllers;
 
@@ -26,6 +27,9 @@ public class HomeController : Controller
         if (user!=null){
             ViewData["username"]= user.UserName;
             ViewData["isLoggedIn"]=true;    
+            if (User.IsInRole("Admin")){
+                ViewData["Requests"]=await _userManager.Users.Where(it=>it.LockoutEnabled==true&&it.EmailConfirmed==true).CountAsync();
+            };
         }
 
         return View();

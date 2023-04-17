@@ -108,7 +108,7 @@ public class AccountController : Controller
         IdentityUser user = await _userManager.FindByIdAsync(userid);
         if(user != null)
         {
-            IdentityResult result = await _userManager.ConfirmEmailAsync(user, token);
+            IdentityResult result = await _userManager.ConfirmEmailAsync(user, decodedTokenString);
             
             if (result.Succeeded)
             {        
