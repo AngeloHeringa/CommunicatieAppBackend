@@ -1,0 +1,44 @@
+@model List<RoleViewModel> 
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>
+    Rollen beheren
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @* @Html.DisplayNameFor(model => model.user.Email) *@
+                Email
+            </th>
+            <th>
+                Heeft admin rol
+                @* @Html.DisplayNameFor(model => model.isAdmin) *@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.user.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.isAdmin)
+            </td>
+            <td>
+                @if(item.isAdmin){
+                    <a class="btn btn-danger" asp-controller="Role" asp-action="ToggleAdmin" asp-route-id="@item.user.Id">Verwijder admin rol</a>
+                }else{
+                    <a class="btn btn-success" asp-controller="Role" asp-action="ToggleAdmin" asp-route-id="@item.user.Id">Maak admin</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
