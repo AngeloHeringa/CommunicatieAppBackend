@@ -6,13 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CommunicatieAppBackend{
 public class AppDbContext : IdentityDbContext<IdentityUser>{
-    public DbSet<IdentityUser> IdentityUsers {get;set;}
-    public DbSet<IdentityUserRole<string>> IdentityUserRoles {get;set;}
-    public DbSet<IdentityRole> IdentityRoles {get;set;}
-    public DbSet<Melding> meldingen {get;set;}
-    public DbSet<Nieuwsbericht> nieuwsberichten {get;set;}
-    public DbSet<Locatie> Locaties {get;set;}
-    public DbSet<Handleiding> Handleidingen {get;set;}
+    public virtual DbSet<IdentityUser> IdentityUsers {get;set;}
+    public virtual DbSet<IdentityUserRole<string>> IdentityUserRoles {get;set;}
+    public virtual DbSet<IdentityRole> IdentityRoles {get;set;}
+    public virtual DbSet<Melding> meldingen {get;set;}
+    public virtual DbSet<Nieuwsbericht> nieuwsberichten {get;set;}
+    public virtual DbSet<Locatie> Locaties {get;set;}
+    public virtual DbSet<Handleiding> Handleidingen {get;set;}
+
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseMySql("server=communicatieapp.mysql.database.azure.com;port=3306;user=angelo;password=Star1234;database=communicatieapp",
@@ -50,18 +55,12 @@ public class AppDbContext : IdentityDbContext<IdentityUser>{
 
         modelBuilder.Entity<Melding>().HasData(
             new Melding{
-                MeldingId=1, Titel="Besluit Centraal Stembureau kandidaatlijsten", Inhoud="In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", Datum=DateTime.Now, LocatieId=1
-            },
-            new Melding{
-                MeldingId=2, Titel="Besluit Centraal Stembureau kandidaatlijsten", Inhoud="In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", Datum=DateTime.Now, LocatieId=1
+                MeldingId=1, Titel="Besluit Centraal Stembureau kandidaatlijsten", Inhoud="In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.", Datum=DateTime.Now, LocatieId=1, Dringend=true
             }
         );
         modelBuilder.Entity<Nieuwsbericht>().HasData(
             new Nieuwsbericht{
                 NieuwsberichtId=1, Titel="Verkiezingen, wat kun jij doen…..?!", Inhoud="Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", Datum=DateTime.Now, Image="plaatje.jpg", LocatieId=1
-            },
-            new Nieuwsbericht{
-                NieuwsberichtId=2, Titel="Verkiezingen, wat kun jij doen…..?!", Inhoud="Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!", Datum=DateTime.Now, Image="plaatje.jpg", LocatieId=1
             }
         );
         var admin = new IdentityUser{
@@ -84,4 +83,32 @@ public class AppDbContext : IdentityDbContext<IdentityUser>{
         modelBuilder.Entity<IdentityUser>().HasData(admin);
     
     }
-}}
+}
+public interface IAppDbContext
+{
+    DbSet<IdentityUser> IdentityUsers { get; set; }
+    DbSet<IdentityUserRole<string>> IdentityUserRoles { get; set; }
+    DbSet<IdentityRole> IdentityRoles { get; set; }
+    DbSet<Melding> meldingen { get; set; }
+    DbSet<Nieuwsbericht> nieuwsberichten { get; set; }
+    DbSet<Locatie> Locaties { get; set; }
+    DbSet<Handleiding> Handleidingen { get; set; }
+}
+
+public class MockAppDbContext : AppDbContext, IAppDbContext
+{
+    public MockAppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<IdentityUser> IdentityUsers { get; set; }
+    public DbSet<IdentityUserRole<string>> IdentityUserRoles { get; set; }
+    public DbSet<IdentityRole> IdentityRoles { get; set; }
+    public DbSet<Melding> meldingen { get; set; }
+    public DbSet<Nieuwsbericht> nieuwsberichten { get; set; }
+    public DbSet<Locatie> Locaties { get; set; }
+    public DbSet<Handleiding> Handleidingen { get; set; }
+}
+
+
+}

@@ -29,6 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Locatie)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dringend)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -46,6 +49,9 @@
             </td>
             <td>
                 @Html.DisplayFor(model => item.Locatie.name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Dringend)
             </td>
             <td>
                 <a asp-controller="Melding" asp-action="Edit" asp-route-id="@item.MeldingId">Edit</a> |

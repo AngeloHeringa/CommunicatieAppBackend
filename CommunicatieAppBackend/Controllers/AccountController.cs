@@ -7,16 +7,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using NuGet.Protocol;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using CommunicatieAppBackend.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using CommunicatieAppBackend.Models;
 
 namespace CommunicatieAppBackend.Controllers;
@@ -41,9 +36,8 @@ public class AccountController : Controller
     }
 
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Index() {
-
-        return View(await _userManager.Users.Where(it=>it.LockoutEnabled==true&&it.EmailConfirmed==true).ToListAsync());
+    public IActionResult Index() {
+        return View(_userManager.Users.Where(it=>it.LockoutEnabled==true&&it.EmailConfirmed==true).ToList());
     }
 
     [HttpGet]
@@ -68,6 +62,7 @@ public class AccountController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+    
     [HttpGet]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Deny(string? id){
@@ -103,7 +98,10 @@ public class AccountController : Controller
     {            
         var token= code;
         _logger.Log(LogLevel.Debug,code);
-        var decodedTokenString = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token));
+        var decodedTokenBytes = WebEncoders.Base64UrlDecode(token);
+        var decodedTokenString = Encoding.UTF8.GetString(decodedTokenBytes);
+
+        // var decodedTokenString = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(token));
 
         IdentityUser user = await _userManager.FindByIdAsync(userid);
         if(user != null)
@@ -305,9 +303,7 @@ public class AccountController : Controller
     [ActionName("data")]
     public async Task<IActionResult> GetUserData()
     {
-        Console.WriteLine(User.Identity.Name);
         var user = await _userManager.FindByNameAsync(User.Identity.Name);
-        Console.WriteLine("userdata: "+user.ToJson());
 
         return Ok(new
         {
