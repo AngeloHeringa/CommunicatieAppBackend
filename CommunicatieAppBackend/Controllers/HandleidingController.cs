@@ -35,7 +35,7 @@ public class HandleidingController : Controller{
         {
             return Content("File not selected");
         }
-        var path = Path.Combine(_environment.WebRootPath, "Document/Handleiding", model.Document.FileName);
+        var path = Path.Combine(_environment.WebRootPath, "Document\\Handleiding", model.Document.FileName);
         Console.WriteLine(path);
 
         using (FileStream stream = new FileStream(path, FileMode.Create))

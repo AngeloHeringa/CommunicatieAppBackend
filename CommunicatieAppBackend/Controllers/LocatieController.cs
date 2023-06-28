@@ -9,9 +9,9 @@ namespace CommunicatieAppBackend.Controllers;
 
 [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
 public class LocatieController : Controller{
-    private readonly AppDbContext _context;
+    private readonly IAppDbContext _context;
 
-    public LocatieController(AppDbContext context)
+    public LocatieController(IAppDbContext context)
     {
         _context = context;
     }

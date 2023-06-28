@@ -58,8 +58,9 @@ public class NieuwsberichtController : Controller
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create()
     {
+        var locaties = await _context.Locaties.ToListAsync();
         return View(new NieuwsberichtViewModel{
-            Locaties= await _context.Locaties.ToListAsync()
+            Locaties= locaties
         });
     }
 
@@ -76,7 +77,7 @@ public class NieuwsberichtController : Controller
         {
             return Content("File not selected");
         }
-        var path = Path.Combine(_environment.WebRootPath, "Image/Nieuws", model.Foto.FileName);
+        var path = Path.Combine(_environment.WebRootPath, "Image\\Nieuws", model.Foto.FileName);
         Console.WriteLine(path);
 
         using (FileStream stream = new FileStream(path, FileMode.Create))
@@ -132,7 +133,7 @@ public class NieuwsberichtController : Controller
         {
             return NotFound();
         }
-        var path = Path.Combine(_environment.WebRootPath, "Image/Nieuws", Nieuwsbericht.Image);
+        var path = Path.Combine(_environment.WebRootPath, "Image\\Nieuws", Nieuwsbericht.Image);
         using (var stream = System.IO.File.OpenRead(path))
         {
         IEnumerable<Locatie> locaties = await _context.Locaties.ToListAsync();
@@ -253,8 +254,9 @@ public class NieuwsberichtController : Controller
             Console.WriteLine("removing "+Nieuwsbericht.NieuwsberichtId+" "+Nieuwsbericht.Titel+" "+Nieuwsbericht.Inhoud+" "+Nieuwsbericht.Datum);
             _context.nieuwsberichten.Remove(Nieuwsbericht);
             _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
-        return RedirectToAction(nameof(Index));
+        else return NotFound();
     }
 
     [Authorize(Roles = "Admin")]

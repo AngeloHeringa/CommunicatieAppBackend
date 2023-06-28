@@ -22,14 +22,17 @@ public class HomeController : Controller
     public async Task<IActionResult> IndexAsync()
     {
         var user = await _userManager.GetUserAsync(User).ConfigureAwait(false);
-        ViewData["isLoggedIn"]=false;    
+        ViewData["isLoggedIn"] = false;
 
-        if (user!=null){
-            ViewData["username"]= user.UserName;
-            ViewData["isLoggedIn"]=true;    
-            if (User.IsInRole("Admin")){
-                ViewData["Requests"]=await _userManager.Users.Where(it=>it.LockoutEnabled==true&&it.EmailConfirmed==true).CountAsync();
-            };
+        if (user != null)
+        {
+            ViewData["username"] = user.UserName;
+            ViewData["isLoggedIn"] = true;
+            if (User.IsInRole("Admin"))
+            {
+                ViewData["Requests"] = await _userManager.Users
+                    .CountAsync(it => it.LockoutEnabled == true && it.EmailConfirmed == true);
+            }
         }
 
         return View();

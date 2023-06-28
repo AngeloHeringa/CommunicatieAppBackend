@@ -25,9 +25,9 @@ public class MeldingController : Controller
     {
         if (searchString != null)
         {
-            return View(_context.meldingen.Where(x => x.Titel.Contains(searchString) || searchString == null).Include(m=>m.Locatie).ToList());
+            return View(_context.meldingen.Where(x => x.Titel.Contains(searchString) || searchString == null).Include(m=>m.Locatie).OrderByDescending(it=>it.Dringend).ThenByDescending(it=>it.Datum).ToList());
         }
-        return View(await _context.meldingen.Include(m=>m.Locatie).ToListAsync());
+        return View(await _context.meldingen.Include(m=>m.Locatie).OrderByDescending(it=>it.Dringend).ThenByDescending(it=>it.Datum).ToListAsync());
     }
 
     // GET: meldingen/Details/5
@@ -81,7 +81,8 @@ public class MeldingController : Controller
                 Inhoud = model.melding.Inhoud,
                 Datum = model.melding.Datum,
                 LocatieId = model.melding.LocatieId,
-                Locatie = model.melding.Locatie
+                Locatie = model.melding.Locatie,
+                Dringend = model.melding.Dringend
             };
             _context.Add(melding);
             await _context.SaveChangesAsync();
@@ -187,8 +188,8 @@ public class MeldingController : Controller
             Console.WriteLine("removing "+melding.MeldingId+" "+melding.Titel+" "+melding.Inhoud+" "+melding.Datum);
             _context.meldingen.Remove(melding);
             _context.SaveChanges();
-        }
-        return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
+        } else return NotFound();
     }
 
     [Authorize(Roles = "Admin")]
@@ -203,7 +204,7 @@ public class MeldingController : Controller
     public async Task<GetMeldingDTO> getAll(){
         return new GetMeldingDTO
         {
-            Meldingen = await _context.meldingen.Include(m=>m.Locatie).ToListAsync()
+            Meldingen = await _context.meldingen.Include(m=>m.Locatie).OrderByDescending(it=>it.Dringend).ThenByDescending(it=>it.Datum).ToListAsync()
         };
     }
 
@@ -219,8 +220,9 @@ public class MeldingController : Controller
 
     [HttpPost]
     [Route("Melding/ApiCreate")]
-    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme, Roles ="Admin")]
     public async Task<IActionResult> ApiCreate([FromBody] MeldingDTO model){
+
         if (!ModelState.IsValid){
             return BadRequest();
         }
@@ -234,7 +236,8 @@ public class MeldingController : Controller
             Locatie = locatie,
             LocatieId = locatie.Id,
             MeldingId = MeldingId,
-            Datum = DateTime.Now
+            Datum = DateTime.UtcNow,
+            Dringend = model.Dringend
         };
 
         _context.Add(melding);

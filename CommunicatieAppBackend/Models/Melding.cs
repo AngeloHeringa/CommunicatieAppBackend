@@ -13,4 +13,5 @@ public class Melding{
     [ForeignKey("Locatie")]
     public int LocatieId {get;set;}
     public Locatie Locatie {get;set;}
+    public bool Dringend {get;set;}
 }
