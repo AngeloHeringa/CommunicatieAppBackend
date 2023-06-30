@@ -6,9 +6,9 @@ Deze api/cms is bedoeld ter ondersteuning van de communicatie app van hoogheemra
 
 Om deze applicatie effectief toe te kunnen passen in de bedrijfsprocessen van Rijnland en Schieland zijn de volgende acties aanbevolen:
 
-# 0AUTH
+# OAUTH
 
-Door 0AUTH toe te voegen aan de applicatie kunnen de gebruikers van de app inloggen met hun werk account. Dit zou ook veiliger zijn aangezien de app nu geen 2-factor authenticatie ondersteund. Om dit toe te voegen moet de IndentityUser worden vervangen met de Identity type die door de organisatie wordt gehanteerd. Ook zou de huidige database moeten worden vervangen door het opslagsysteem van de organisatie.
+Door OAUTH toe te voegen aan de applicatie kunnen de gebruikers van de app inloggen met hun werk account. Dit zou ook veiliger zijn aangezien de app nu geen 2-factor authenticatie ondersteund. Om dit toe te voegen moet de IndentityUser worden vervangen met de Identity type die door de organisatie wordt gehanteerd. Ook zou de huidige database moeten worden vervangen door het opslagsysteem van de organisatie.
 
 # Hosting
 
