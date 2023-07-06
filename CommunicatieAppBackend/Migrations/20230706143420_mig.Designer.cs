@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommunicatieAppBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230606111602_mig")]
+    [Migration("20230706143420_mig")]
     partial class mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             MeldingId = 1,
-                            Datum = new DateTime(2023, 6, 6, 13, 16, 2, 24, DateTimeKind.Local).AddTicks(3847),
+                            Datum = new DateTime(2023, 7, 6, 16, 34, 20, 229, DateTimeKind.Local).AddTicks(5667),
                             Dringend = true,
                             Inhoud = "In navolging van het besluit dat het Centraal Stembureau 3 februari jl. heeft genomen is er geen bezwaar noch beroep hiertegen aangetekend. Dit houdt in dat de Kandidatenlijsten definitief zijn.Op vrijdag 3 februari heeft het Centraal Stembureau het besluit genomen over de geldigheid en nummering van de kandidatenlijsten voor de waterschapsverkiezingen op 15 maart 2023.",
                             LocatieId = 1,
@@ -145,7 +145,7 @@ namespace CommunicatieAppBackend.Migrations
                         new
                         {
                             NieuwsberichtId = 1,
-                            Datum = new DateTime(2023, 6, 6, 13, 16, 2, 24, DateTimeKind.Local).AddTicks(3898),
+                            Datum = new DateTime(2023, 7, 6, 16, 34, 20, 229, DateTimeKind.Local).AddTicks(5732),
                             Image = "plaatje.jpg",
                             Inhoud = "Het is bijna weer zover, één keer in de vier jaar vieren we het feest van de democratie voor het waterschap via verkiezingen. Daar gaat een uitgekiende campagne bij helpen. Met de campagne maken we de inwoners van Rijnland nog meer bewust van het belangrijke werk dat wij doen. En vooral de bijzondere rol die zijzelf hebben, namelijk stemmen. En ja helaas, dat is in deze tijd nog steeds een bijzonder en groot goed dat we met elkaar moeten koesteren!!",
                             LocatieId = 1,
@@ -181,8 +181,8 @@ namespace CommunicatieAppBackend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c8a58f88-3099-4ca3-b8b0-3a37db3d3fa3",
-                            ConcurrencyStamp = "457492e9-4f37-4ce3-b9a3-2d77e54517eb",
+                            Id = "0d87d14a-15dd-4fb8-a7b9-9d1805e4e29b",
+                            ConcurrencyStamp = "a14d9883-f361-468c-b3bf-0369e89c30e3",
                             Name = "Admin"
                         });
                 });
@@ -276,17 +276,17 @@ namespace CommunicatieAppBackend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f2570188-64d9-4bdd-9d22-11f7dd133765",
+                            Id = "e923ce51-a63a-4cd4-8ccf-6c7e2c733cf4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d983a1e-5059-4a89-aa82-59f43f9e7403",
+                            ConcurrencyStamp = "c168ec75-9bc6-4cd1-9ade-0ea62564e147",
                             Email = "admin@admin",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN",
                             NormalizedUserName = "ADMIN@ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFo86HekPqTYklINhQi/huOvsytizYkPZU13Dz2Cpbomh2T2HQiK20x0pdCdL+OEQg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEiI0LqXNrF2lV4QtCVk8rS9fQZPRM7cpv0pFBRODEAdsjIJLnS/h0yQk8r3J39I9w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bb323858-aff4-4b06-83f1-d0770b1d120d",
+                            SecurityStamp = "72d98c9d-071e-4ece-9c70-58224479905c",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin"
                         });
@@ -354,8 +354,8 @@ namespace CommunicatieAppBackend.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f2570188-64d9-4bdd-9d22-11f7dd133765",
-                            RoleId = "c8a58f88-3099-4ca3-b8b0-3a37db3d3fa3"
+                            UserId = "e923ce51-a63a-4cd4-8ccf-6c7e2c733cf4",
+                            RoleId = "0d87d14a-15dd-4fb8-a7b9-9d1805e4e29b"
                         });
                 });
 

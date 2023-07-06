@@ -42,7 +42,7 @@ namespace CommunicatieAppBackend.Tests.Controllers
             //ensure empty:
             foreach (var entity in _mockContext.Locaties)
                 _mockContext.Locaties.Remove(entity);
-            _mockContext.SaveChanges();
+            // _mockContext.SaveChanges();
             
             await _mockContext.Locaties.AddRangeAsync(locaties);
 
