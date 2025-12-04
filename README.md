@@ -1,6 +1,6 @@
 # CommunicatieAppBackend
 
-Deze api/cms is bedoeld ter ondersteuning van de communicatie app van hoogheemraadschap van Rijnland om zo data onderhoudbaar te maken, te beveiligen en beschikbaar te stellen.
+Deze api/cms is bedoeld ter ondersteuning van de communicatie app van hoogheemraadschap van Rijnland om zo data onderhoudbaar te maken, te beveiligen en beschikbaar te stellen. (The code has not been put to use as the budget was not there for the initial scope)
 
 # Todo
 
